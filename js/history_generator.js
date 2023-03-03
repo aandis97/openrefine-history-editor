@@ -78,7 +78,7 @@ function selectExpression(validatorIndex) {
         indexOpener += `__${parameter.field}__`.length;
 
         if (parameter.type != 'checkbox') {
-            validator.expression =  validator.expression.substring(0, indexOpener) + (parameter.value ?? '') + expression.substring(indexCloser);
+            validator.expression =  validator.expression.substring(0, indexOpener) + (parameter.value ?? '') + validator.expression.substring(indexCloser);
         }
 
         parametersHtml += `
