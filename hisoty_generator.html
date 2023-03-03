@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Generator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css"> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./vendor/pnotify/pnotify.custom.css">
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-5 {
+            margin-top: 5px;
+        }
+        .mt-10 {
+            margin-top: 10px;
+        }
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;  
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        .step.finish {
+            background-color: #04AA6D;
+        }
+
+        .expression-container {
+            background-color: #e3e3e3;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>    
+    <center><h2>Generate History, Validator</h2></center>
+    <div class="container step-1-container">
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+
+                <h4 for="basic-url">Nama Kolom</h4> 
+                <textarea id="txt-columns" onchange="getTxtColumns(this)" class="form-control" cols="40" rows="10" placeholder="Masukan nama-nama kolom, pisahkan setiap kolom dengan enter.."></textarea>
+                <b>Total Kolom : <label id="label-total-column"></label></b>
+                
+
+                <button class="btn btn-info mt-10 pull-right" id="btn-next">Selanjutnya</button>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class="text-center mt-10">
+        <span class="step active"></span>
+        <span class="step"></span>
+    </div>
+    
+    <div class="container step-2-container">
+        <button class="btn btn-success" id="btn-generate-json">Generate History Json</button>
+        <br><br><br>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Column Title</th>
+                        <th>Expression Type</th>
+                    </tr>
+                </thead>
+                <tbody id="columns-data">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-expression" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Pilih Script Expression</h5>
+                </div>
+                <div class="modal-body">
+                            
+                    <table class="table table-striped table-bordered table-validator" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 20;">No</th>
+                                <th>Name</th>
+                                <th>Parameter</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-json">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-save">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script src="./vendor/pnotify/pnotify.custom.js"></script>
+<script src="./js/list_validator.js"></script>
+<script src="./js/history_generator.js"></script>
+</html>

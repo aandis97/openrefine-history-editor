@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openrefine History Editor</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css"> 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./vendor/pnotify/pnotify.custom.css">
+</head>
+<body>
+    <div class="container">
+        <br><br><br>
+        <center><h2>Data History Openrefine</h2></center>
+        <div class="row">
+            <div class="col-md-4">
+
+                <label for="basic-url">Pilih Data History :</label> 
+                <select id="select-files" class="form-control">
+                </select>
+            </div>
+        </div>
+
+        <br>
+        
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                Selected File: <b><span id="selected-filename">Mahasiswa</span></b>, 
+                Total Rows : <b><span id="total-rows">0</span></b> 
+                <div class="pull-right">
+                    <button id="btn-export" class="btn btn-info btn-xs"><i class="fa fa-download"></i> Export</button>
+                </div>
+            </div>
+            
+            <table class="table table-striped table-bordered table-history" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="sortable">
+                            <input type="checkbox" onchange="toggleSelectAllHistory(this)" class="form-control" style="height:17px">
+                        </th>
+                        <th>No</th>
+                        <th>Type/Operation</th>
+                        <th>Column Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="data-json">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-expression" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Detail Expression - <span id="modal-title"></span></h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="history_index" id="modal-history-index">
+                <textarea id="modal-txt-expression" class="form-control" rows="20"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="modal-btn-save">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script src="./vendor/pnotify/pnotify.custom.js"></script>
+<script src="./js/mahasiswa-validation.js"></script>
+<script src="./js/script.js"></script>
+</html>
