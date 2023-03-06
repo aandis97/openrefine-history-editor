@@ -6,7 +6,8 @@ let selectedHistoryIndexes = [];
 let selectedFile = historyFiles[0];
 
 // TODO: selected files, these data depends from onchange selected file
-let dataHistory = dataHistoryMahasiswa;
+// let dataHistory = dataHistoryMahasiswa;
+let dataHistory = [];
 $('#selected-filename').html(selectedFile.name);
 $('#total-rows').html(dataHistory.length);
 // TODO END
@@ -16,35 +17,51 @@ historyFiles.forEach((historyFile) => {
     let option = `<option value="${historyFile.file}">${historyFile.name}</option>`;
     $('#select-files').append(option);
     console.log(historyFile);
-});
-
-dataHistory.forEach( (history, historyIndex) => {
-    const columnName = getColumnName(history); 
-    const checkbox = `<input type="checkbox" data-history-index="${historyIndex}" onchange="addOrRemoveHistory(this)" class="form-control history-checkbox" style="height:17px">`;
-
-    let historyRow = 
-    `<tr>
-        <td>${checkbox}</td>
-        <td>${rowNumber++}</td>
-        <td>${history.op}</td>
-        <td>${columnName}</td> 
-        <td>
-            ${getExpressionHistoryByType(history).substring(0, 30)}..
-        </td>
-        <td>
-            <button onclick='showModalExpression(${historyIndex})' class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Expression</button>
-        </td>
-    </tr>`
-    
-    $('#data-json').append(historyRow);
-});
-
-$('.table-history').DataTable({
-    "pageLength": 50,
-    "columnDefs": [
-        { "orderable": false, "targets": [0,5] }
-    ]
 });               
+
+$("#btn-open-load").click(function() {
+    $('#modal-load-json').modal('show');
+});
+
+$("#modal-btn-load").click(function() {
+    const textJson = $('#modal-txt-load-json').val();
+    dataHistory = JSON.parse(textJson);
+
+    $('#data-json').empty();
+
+    dataHistory.forEach( (history, historyIndex) => {
+        const columnName = getColumnName(history); 
+        const checkbox = `<input type="checkbox" data-history-index="${historyIndex}" onchange="addOrRemoveHistory(this)" class="form-control history-checkbox" style="height:17px">`;
+
+        let historyRow = 
+        `<tr>
+            <td>${checkbox}</td>
+            <td>${rowNumber++}</td>
+            <td>${history.op}</td>
+            <td>${columnName}</td> 
+            <td>
+                ${getExpressionHistoryByType(history).substring(0, 30)}..
+            </td>
+            <td>
+                <button onclick='showModalExpression(${historyIndex})' class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Expression</button>
+            </td>
+        </tr>`
+        
+        $('#data-json').append(historyRow);
+    });
+
+    $('#total-rows').html(dataHistory.length);
+
+    $('.table-history').DataTable({
+        "retrieve": true,
+        "pageLength": 50,
+        "columnDefs": [
+            { "orderable": false, "targets": [0,5] }
+        ]
+    });
+    
+    $('#modal-load-json').modal('hide');
+});
 
 function showModalExpression(historyIndex) {
     $('#modal-title').html(getColumnName(dataHistory[historyIndex]));

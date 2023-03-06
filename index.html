@@ -18,9 +18,11 @@
         <div class="row">
             <div class="col-md-4">
 
-                <label for="basic-url">Pilih Data History :</label> 
+                <!-- <label for="basic-url">Pilih Data History :</label> 
                 <select id="select-files" class="form-control">
-                </select>
+                </select> -->
+                
+                <button id="btn-open-load" class="btn btn-info btn-sm"><i class="fa fa-download"></i> Load History Json</button>
             </div>
         </div>
 
@@ -32,7 +34,7 @@
                 Selected File: <b><span id="selected-filename">Mahasiswa</span></b>, 
                 Total Rows : <b><span id="total-rows">0</span></b> 
                 <div class="pull-right">
-                    <button id="btn-export" class="btn btn-info btn-xs"><i class="fa fa-download"></i> Export</button>
+                    <button id="btn-export" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Export</button>
                 </div>
             </div>
             
@@ -56,21 +58,38 @@
     </div>
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-expression" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Detail Expression - <span id="modal-title"></span></h5>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="history_index" id="modal-history-index">
-                <textarea id="modal-txt-expression" class="form-control" rows="20"></textarea>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="modal-btn-save">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Detail Expression - <span id="modal-title"></span></h5>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="history_index" id="modal-history-index">
+                    <textarea id="modal-txt-expression" class="form-control" rows="20"></textarea>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-save">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-load-json" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Modal Load History Json</h5>
+                </div>
+                <div class="modal-body">
+                    <textarea id="modal-txt-load-json" class="form-control" rows="20"></textarea>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-btn-load">Load</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
