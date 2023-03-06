@@ -56,6 +56,14 @@
                 <h4 for="basic-url">Nama Kolom</h4> 
                 <textarea id="txt-columns" onchange="getTxtColumns(this)" class="form-control" cols="40" rows="10" placeholder="Masukan nama-nama kolom, pisahkan setiap kolom dengan enter.."></textarea>
                 <b>Total Kolom : <label id="label-total-column"></label></b>
+
+                <br>
+                <br>
+                Generate Untuk :
+                <br>
+                <input type="radio" name="generate_type" class="generate-type" value="validation" checked> Validation 
+                <br>
+                <input type="radio" name="generate_type" class="generate-type" value="mapping"> Cleanning & Mapping
                 
 
                 <button class="btn btn-info mt-10 pull-right" id="btn-next">Selanjutnya</button>
@@ -121,5 +129,6 @@
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 <script src="./vendor/pnotify/pnotify.custom.js"></script>
 <script src="./js/list_validator.js"></script>
+<script src="./js/list_cleanning_mapping.js"></script>
 <script src="./js/history_generator.js"></script>
 </html>
